@@ -1,7 +1,7 @@
 default:
-	go build -o cb-milkyway
+	CGO_ENABLED=0 go build -o cb-milkyway
 cc:
-	GOOS=linux GOARCH=arm go build -o cb-milkyway-arm
+	CGO_ENABLED=0 GOOS=linux GOARCH=arm go build -o cb-milkyway-arm
 run:
 	./cb-milkyway
 clean:

@@ -14,8 +14,8 @@
 # Binaries
 src/src
 src/mcism
-src/cb-milkyway
-src/cb-milkyway-arm
+#src/cb-milkyway
+#src/cb-milkyway-arm
 src/cli/tbctl
 src/cli/cli
 
