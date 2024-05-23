@@ -31,10 +31,10 @@ CMD=${2-""}
 	echo "#-----------------------------"
 	curl -sX GET http://${HOST}:1324/milkyway/fioW | json_pp || return 1
 	echo "#-----------------------------"
-	curl -sX GET http://${HOST}:1324/milkyway/dbR | json_pp || return 1
-	echo "#-----------------------------"
-	curl -sX GET http://${HOST}:1324/milkyway/dbW | json_pp || return 1
-	echo "#-----------------------------"
+#	curl -sX GET http://${HOST}:1324/milkyway/dbR | json_pp || return 1
+#	echo "#-----------------------------"
+#	curl -sX GET http://${HOST}:1324/milkyway/dbW | json_pp || return 1
+#	echo "#-----------------------------"
 
 	curl -sX GET http://${HOST}:1324/milkyway/rtt -H 'Content-Type: application/json' -d '{ "host": "localhost"}' |json_pp || return 1
 	echo "#-----------------------------"

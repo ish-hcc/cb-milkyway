@@ -45,7 +45,7 @@ func RestGetInstall(c echo.Context) error {
 	fmt.Println("===============================================")
 
 	// wget install script from github install.sh
-	cmdStr := "wget https://github.com/cloud-barista/cb-milkyway/raw/master/src/script/install.sh -P ~/script/"
+	cmdStr := "wget https://github.com/ish-hcc/cb-milkyway/raw/master/src/script/install.sh -P ~/script/"
 	result, err := SysCall(cmdStr)
 	if err != nil {
 		mapA := map[string]string{"message": "Error in installation: wget script " + err.Error()}
@@ -116,27 +116,27 @@ func RestGetInit(c echo.Context) error {
 	}
 
 	// Init DB
-	cmdStr = "sysbench /usr/share/sysbench/oltp_read_write.lua --db-driver=mysql --table-size=100000 --mysql-db=sysbench --mysql-user=sysbench --mysql-password=psetri1234ak prepare"
-	outputStr2, err := SysCall(cmdStr)
-	if err != nil {
-		mapA := map[string]string{"message": "Error in excuting the benchmark: Init DB " + err.Error()}
-		return c.JSON(http.StatusNotFound, &mapA)
-	}
+	//cmdStr = "sysbench /usr/share/sysbench/oltp_read_write.lua --db-driver=mysql --table-size=100000 --mysql-db=sysbench --mysql-user=sysbench --mysql-password=psetri1234ak prepare"
+	//outputStr2, err := SysCall(cmdStr)
+	//if err != nil {
+	//	mapA := map[string]string{"message": "Error in excuting the benchmark: Init DB " + err.Error()}
+	//	return c.JSON(http.StatusNotFound, &mapA)
+	//}
 
-	grepStr = regexp.MustCompile(` ([0-9]+) records into .([a-zA-Z]+).`)
-	parseStr = grepStr.FindStringSubmatch(outputStr2)
-	if len(parseStr) > 0 {
-		parseStr1 := strings.TrimSpace(parseStr[0])
-		fmt.Printf("Table creation result: %s\n", parseStr1)
-
-		outputStr2 = parseStr1
-	}
+	//grepStr = regexp.MustCompile(` ([0-9]+) records into .([a-zA-Z]+).`)
+	//parseStr = grepStr.FindStringSubmatch(outputStr2)
+	//if len(parseStr) > 0 {
+	//	parseStr1 := strings.TrimSpace(parseStr[0])
+	//	fmt.Printf("Table creation result: %s\n", parseStr1)
+	//
+	//	outputStr2 = parseStr1
+	//}
 
 	elapsed := time.Since(start)
 	elapsedStr := strconv.FormatFloat(elapsed.Seconds(), 'f', 6, 64)
 
-	outputStr += ", "
-	outputStr += outputStr2
+	//outputStr += ", "
+	//outputStr += outputStr2
 
 	//result = "The init is complete: "
 
@@ -173,17 +173,17 @@ func RestGetClean(c echo.Context) error {
 	}
 
 	// Clean DB
-	cmdStr = "sysbench /usr/share/sysbench/oltp_read_write.lua --db-driver=mysql --table-size=100000 --mysql-db=sysbench --mysql-user=sysbench --mysql-password=psetri1234ak cleanup"
-	result2, err := SysCall(cmdStr)
-	if err != nil {
-		mapA := map[string]string{"message": "Error in excuting the benchmark: Clean DB " + err.Error()}
-		return c.JSON(http.StatusNotFound, &mapA)
-	}
+	//cmdStr = "sysbench /usr/share/sysbench/oltp_read_write.lua --db-driver=mysql --table-size=100000 --mysql-db=sysbench --mysql-user=sysbench --mysql-password=psetri1234ak cleanup"
+	//result2, err := SysCall(cmdStr)
+	//if err != nil {
+	//	mapA := map[string]string{"message": "Error in excuting the benchmark: Clean DB " + err.Error()}
+	//	return c.JSON(http.StatusNotFound, &mapA)
+	//}
 
 	elapsed := time.Since(start)
 	elapsedStr := strconv.FormatFloat(elapsed.Seconds(), 'f', 6, 64)
 
-	result += result2
+	//result += result2
 
 	result = "The cleaning is complete"
 
